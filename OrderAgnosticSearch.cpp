@@ -46,7 +46,7 @@ int AgnosticSearch(int *arr, int n, int x)
         else
             return -1;
     }
-    else if (arr[0] < arr[1])
+    else if (arr[0] < arr[n-1])
     {
         return BinarySearch(arr, n, x);
     }
