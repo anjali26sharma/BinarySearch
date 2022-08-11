@@ -7,6 +7,8 @@ int rotate(int *arr, int n)
     int mid;
     int next;
     int prev;
+    if (arr[0] < arr[n - 1])
+        return 0;
     while (start <= end)
     {
         mid = start + ((end - start) / 2);
@@ -19,9 +21,9 @@ int rotate(int *arr, int n)
         else
         {
             if (arr[mid] >= arr[0])
-                start = mid + 1;
+                start = (mid + 1) % n;
             else if (arr[mid] <= arr[n - 1])
-                end = mid - 1;
+                end = (mid + n - 1) % n;
         }
     }
 
@@ -35,5 +37,8 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> arr[i];
     int num = rotate(arr, n);
-    cout << "No of times this array is rotated : " << n - num << endl;
+    if (num == 0)
+        cout << "No. of times the array is rotated is : 0 or " << n;
+    else
+        cout << "No of times this array is rotated : " << n - num << endl;
 }
